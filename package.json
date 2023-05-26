@@ -1,15 +1,15 @@
 {
-	"name": "tailpress",
-	"version": "3.3.0",
-	"description": "Boilerplate WordPress theme with Tailwind CSS.",
-	"author": "Jeffrey van Rossum",
+	"name": "codeandfood-theme",
+	"version": "0.1.0",
+	"description": "wordpress theme for codeandfood",
+	"author": "Jeesun Kim",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jeffreyvr/tailpress"
+		"url": "https://github.com/jeesunikim"
 	},
-	"theme_uri": "https://github.com/jeffreyvr/tailpress",
+	"theme_uri": "https://github.com/jeesunikim",
 	"author_uri": "https://vanrossum.dev",
-	"text_domain": "tailpress",
+	"text_domain": "codeandfood-theme",
 	"license": "MIT",
 	"scripts": {
 		"dev": "mix",
