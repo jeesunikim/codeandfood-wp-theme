@@ -3,14 +3,14 @@
 /**
  * Theme setup.
  */
-function codeandfood_theme_setup() {
+function codeandfood_setup() {
 	add_theme_support( 'title-tag' );
 
-	register_nav_menus(
-		array(
-			'primary' => __( 'Primary Menu', 'codeandfood_theme' ),
-		)
-	);
+	// register_nav_menus(
+	// 	array(
+	// 		'primary' => __( 'Primary Menu', 'codeandfood' ),
+	// 	)
+	// );
 
 	add_theme_support(
 		'html5',
@@ -33,19 +33,34 @@ function codeandfood_theme_setup() {
 	add_editor_style( 'css/editor-style.css' );
 }
 
-add_action( 'after_setup_theme', 'codeandfood_theme_setup' );
+add_action( 'after_setup_theme', 'codeandfood_setup' );
+
+/**
+ * Register classes that we're going to use in functions.php
+ */
+
+ // Enhance the theme by hooking into WordPress.
+require get_template_directory() . '/inc/template-functions.php';
+
+ // Custom template tags for the theme.
+require get_template_directory() . '/inc/template-tags.php';
+
+require get_template_directory() . '/classes/class-codeandfood-customize.php';
+new Codeandfood_Customize();
+
+require get_template_directory() . '/classes/class-codeandfood-svg-icons.php';
 
 /**
  * Enqueue theme assets.
  */
-function codeandfood_theme_enqueue_scripts() {
-	$theme = wp_get_theme();
+function codeandfood_register_style_script() {
+	$version = wp_get_theme()->get( 'Version' );
 
-	wp_enqueue_style( 'codeandfood_theme', codeandfood_theme_asset( 'css/app.css' ), array(), $theme->get( 'Version' ) );
-	wp_enqueue_script( 'codeandfood_theme', codeandfood_theme_asset( 'js/app.js' ), array(), $theme->get( 'Version' ) );
+	wp_enqueue_style( 'codeandfood_style', codeandfood_asset( 'assets/css/app.css' ), array(), $version);
+	wp_enqueue_script( 'codeandfood_script', codeandfood_asset( 'assets/js/app.js' ), array(), $version);
 }
 
-add_action( 'wp_enqueue_scripts', 'codeandfood_theme_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'codeandfood_register_style_script' );
 
 /**
  * Get asset path.
@@ -54,7 +69,7 @@ add_action( 'wp_enqueue_scripts', 'codeandfood_theme_enqueue_scripts' );
  *
  * @return string
  */
-function codeandfood_theme_asset( $path ) {
+function codeandfood_asset( $path ) {
 	if ( wp_get_environment_type() === 'production' ) {
 		return get_stylesheet_directory_uri() . '/' . $path;
 	}
@@ -71,7 +86,7 @@ function codeandfood_theme_asset( $path ) {
  *
  * @return array
  */
-function codeandfood_theme_nav_menu_add_li_class( $classes, $item, $args, $depth ) {
+function codeandfood_nav_menu_add_li_class( $classes, $item, $args, $depth ) {
 	if ( isset( $args->li_class ) ) {
 		$classes[] = $args->li_class;
 	}
@@ -83,7 +98,7 @@ function codeandfood_theme_nav_menu_add_li_class( $classes, $item, $args, $depth
 	return $classes;
 }
 
-add_filter( 'nav_menu_css_class', 'codeandfood_theme_nav_menu_add_li_class', 10, 4 );
+add_filter( 'nav_menu_css_class', 'codeandfood_nav_menu_add_li_class', 10, 4 );
 
 /**
  * Adds option 'submenu_class' to 'wp_nav_menu'.
@@ -94,7 +109,7 @@ add_filter( 'nav_menu_css_class', 'codeandfood_theme_nav_menu_add_li_class', 10,
  *
  * @return array
  */
-function codeandfood_theme_nav_menu_add_submenu_class( $classes, $args, $depth ) {
+function codeandfood_nav_menu_add_submenu_class( $classes, $args, $depth ) {
 	if ( isset( $args->submenu_class ) ) {
 		$classes[] = $args->submenu_class;
 	}
@@ -106,7 +121,7 @@ function codeandfood_theme_nav_menu_add_submenu_class( $classes, $args, $depth )
 	return $classes;
 }
 
-add_filter( 'nav_menu_submenu_css_class', 'codeandfood_theme_nav_menu_add_submenu_class', 10, 3 );
+add_filter( 'nav_menu_submenu_css_class', 'codeandfood_nav_menu_add_submenu_class', 10, 3 );
 
 
 /**
@@ -115,7 +130,7 @@ add_filter( 'nav_menu_submenu_css_class', 'codeandfood_theme_nav_menu_add_submen
  * @param array $classes Original body classes.
  * @return array Modified body classes.
  */
-function codeandfood_theme_layout_class( $classes ) {
+function codeandfood_layout_class( $classes ) {
 
 	if ( is_single() && has_post_thumbnail() || is_page() && has_post_thumbnail() ) {
 		$classes[] = 'has-featured-image';
@@ -129,4 +144,4 @@ function codeandfood_theme_layout_class( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'codeandfood_theme_layout_class' );
+add_filter( 'body_class', 'codeandfood_layout_class' );
