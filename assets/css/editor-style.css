@@ -39,6 +39,15 @@
         max-width: 1440px
     }
 }
+.visible {
+    visibility: visible
+}
+.static {
+    position: static
+}
+.sticky {
+    position: sticky
+}
 .m-8 {
     margin: 2rem
 }
@@ -70,17 +79,23 @@
 .mb-4 {
     margin-bottom: 1rem
 }
+.mb-5 {
+    margin-bottom: 1.25rem
+}
 .mb-6 {
     margin-bottom: 1.5rem
 }
 .mb-8 {
     margin-bottom: 2rem
 }
-.mt-4 {
-    margin-top: 1rem
+.block {
+    display: block
 }
 .flex {
     display: flex
+}
+.table {
+    display: table
 }
 .grid {
     display: grid
@@ -88,8 +103,14 @@
 .hidden {
     display: none
 }
+.h-0 {
+    height: 0px
+}
 .h-1 {
     height: 0.25rem
+}
+.h-6 {
+    height: 1.5rem
 }
 .min-h-screen {
     min-height: 100vh
@@ -114,9 +135,6 @@
 }
 .flex-none {
     flex: none
-}
-.flex-grow {
-    flex-grow: 1
 }
 .cursor-pointer {
     cursor: pointer
@@ -164,10 +182,6 @@
 .border-transparent {
     border-color: transparent
 }
-.bg-gray-100 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(243 244 246 / var(--tw-bg-opacity))
-}
 .bg-gray-200 {
     --tw-bg-opacity: 1;
     background-color: rgb(229 231 235 / var(--tw-bg-opacity))
@@ -212,9 +226,6 @@
 .to-90\% {
     --tw-gradient-to-position: 90%
 }
-.p-4 {
-    padding: 1rem
-}
 .px-12 {
     padding-left: 3rem;
     padding-right: 3rem
@@ -254,6 +265,9 @@
 .py-3 {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem
+}
+.pr-1 {
+    padding-right: 0.25rem
 }
 .text-center {
     text-align: center
@@ -354,6 +368,9 @@
 .antialiased {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
+}
+.filter {
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 .transition-colors {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
@@ -474,35 +491,6 @@ body {
     }
 }
 @media (min-width: 960px) {
-    .lg\:-mx-4 {
-        margin-left: -1rem;
-        margin-right: -1rem
-    }
-    .lg\:mx-4 {
-        margin-left: 1rem;
-        margin-right: 1rem
-    }
-    .lg\:mt-0 {
-        margin-top: 0px
-    }
-    .lg\:block {
-        display: block
-    }
-    .lg\:flex {
-        display: flex
-    }
-    .lg\:items-center {
-        align-items: center
-    }
-    .lg\:justify-between {
-        justify-content: space-between
-    }
-    .lg\:bg-transparent {
-        background-color: transparent
-    }
-    .lg\:p-0 {
-        padding: 0px
-    }
     .lg\:text-5xl {
         font-size: 3rem;
         line-height: 1
