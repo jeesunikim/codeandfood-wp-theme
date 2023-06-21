@@ -14,7 +14,7 @@ $the_query = new WP_Query( $args );
 
 get_header();  ?>
 
-<section class="col-span-2 grid grid-cols-2 gap-8">
+<section class="grid gap-8 grid-cols-3">
 <?php
     if ( $the_query->have_posts() ) {
         // Load posts loop.
@@ -28,7 +28,5 @@ get_header();  ?>
 
     }
 ?>
-</section>
-<section class="col-end-4">
 </section>
 <?php wp_reset_postdata();

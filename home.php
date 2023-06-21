@@ -28,7 +28,35 @@ get_header(); ?>
 	</header><!-- .page-header -->
 <?php endif; ?>
 
-<section class="col-span-4">
+<section class="grid grid-cols-1 gap-y-2 md:gap-y-0 md:gap-x-4 md:grid-cols-3 lg:px-8 lg:py-4 md:px-6 md:mb-8">
+    <div class="relative mb-4 md:mb-0">
+        <!-- <img src="https://codeandfooddev.wpengine.com/wp-content/uploads/2023/02/home-thumb.jpg" alt="" /> -->
+        <div class="flex flex-col justify-between mx-auto md:flex-row">
+            <div class="flex flex-col mb-8">
+                <h2 class="font-mono text-3xl font-semibold">Hello! 안녕하세요!</h2>
+                <h2 class="font-mono text-3xl font-semibold">I'm Jee (지선)!</h2>
+                <br/>
+                <p class="font-sans text-base font-medium">frontend developer ✨</p>
+                <p class="font-sans text-base font-medium">I love meeting new people 💕</p>
+                <p class="font-sans text-base font-medium">say hi 👋</p>
+                <br/>
+                <a class="font-sans text-base font-medium" href="https://twitter.com/codeandfood">@codeandfood</a>
+                <a class="font-sans text-base font-medium" href="mailto:hi@codeandfood.com">hi@codeandfood.com</a>
+            </div>
+        </div>
+    </div>
+    <div class="mb-14 md:col-span-2 md:mb-0">
+        <h3 class="font-mono text-lg font-semibold">Some topics I like to talk about...</h3>
+        <?php $tags = get_tags(array('hide_empty' => false));
+        foreach ($tags as $tag) { $tag_link = get_tag_link( $tag->term_id ); echo '<a href=' . esc_url( $tag_link ) . ' class="font-mono text-sm font-medium pr-3">#' . $tag->name . '</a>';};?>
+    </div>
+</section>
+
+
+
+<h3 class="font-mono text-base text-center font-semibold mb-4 md:mb-6">[recent posts]</h3>
+
+<section class="grid grid-cols-1 gap-y-7 px-6 md:gap-x-6 md:grid-cols-3 md:gap-y-12">
     <?php if ( $the_query->have_posts() ) {
 
         // Load posts loop.
@@ -43,16 +71,6 @@ get_header(); ?>
         // If no content, include the "No posts found" template.
         get_template_part( 'template-parts/content/content-none' );
     }?>
-</section>
-
-<section class="col-end-7 col-span-2 items-center md:justify-between md:mb-12">
-    <div class="relative mb-8">
-        <!-- <img src="https://codeandfooddev.wpengine.com/wp-content/uploads/2023/02/home-thumb.jpg" alt="" /> -->
-        <div class="flex flex-col justify-between absolute left-0 right-0 mx-auto w-4/5 h-32 border-solid border-2 border-gray-900 bg-slate-50 p-4">
-            <h2 class="font-mono text-lg font-semibold text-center">Jee선</h2>
-            <p class="font-serif text-sm text-center">frontend developer ✨</p>
-        </div>
-    </div>
 </section>
 
 <?php
